@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: Stripe.LATEST_API_VERSION,
+  apiVersion: '2023-10-16',
 })
 
 
