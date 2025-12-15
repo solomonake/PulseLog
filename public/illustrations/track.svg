@@ -1,0 +1,17 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="220" height="220" rx="32" fill="#F7F9FC" stroke="#E5E7EB" stroke-width="4"/>
+  <ellipse cx="120" cy="120" rx="90" ry="60" fill="#E6F4FF" stroke="#0E1A2B" stroke-width="4"/>
+  <ellipse cx="120" cy="120" rx="70" ry="45" fill="#D4EDFB" stroke="#0E1A2B" stroke-width="3" stroke-dasharray="8 6"/>
+  <path d="M60 120C60 96 82 80 120 80C158 80 180 96 180 120C180 144 158 160 120 160C82 160 60 144 60 120Z" fill="#1DB954" opacity="0.2"/>
+  <circle cx="120" cy="120" r="14" fill="#1DB954" stroke="#0E1A2B" stroke-width="3"/>
+  <path d="M120 106L126 120H114L120 106Z" fill="#0E1A2B"/>
+  <path d="M140 120L120 134L100 120L120 106L140 120Z" fill="#0E1A2B" opacity="0.15"/>
+  <path d="M120 134L120 170" stroke="#0E1A2B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 170H130" stroke="#0E1A2B" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="120" cy="85" r="4" fill="#0E1A2B"/>
+  <circle cx="155" cy="120" r="4" fill="#0E1A2B"/>
+  <circle cx="120" cy="155" r="4" fill="#0E1A2B"/>
+  <circle cx="85" cy="120" r="4" fill="#0E1A2B"/>
+  <text x="120" y="210" text-anchor="middle" fill="#0E1A2B" font-family="Inter, Arial" font-size="14" font-weight="600">Track Focus</text>
+</svg>
+

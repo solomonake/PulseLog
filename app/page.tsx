@@ -6,7 +6,8 @@ export default async function Home() {
   const { data: { user } } = await supabase.auth.getUser()
 
   if (user) {
-    redirect('/dashboard')
+    // Always send authenticated users to log; middleware will route onboarding if needed
+    redirect('/log')
   } else {
     redirect('/login')
   }
