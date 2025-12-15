@@ -98,13 +98,20 @@ export default function OnboardingPage() {
                     <SelectValue placeholder="Select event" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="5k">5K</SelectItem>
-                    <SelectItem value="10k">10K</SelectItem>
-                    <SelectItem value="mile">Mile</SelectItem>
+                    <SelectItem value="5k">5K (XC)</SelectItem>
+                    <SelectItem value="6k">6K (XC)</SelectItem>
+                    <SelectItem value="8k">8K (XC)</SelectItem>
+                    <SelectItem value="10k">10K (XC)</SelectItem>
+                    <SelectItem value="800m">800m</SelectItem>
                     <SelectItem value="1500m">1500m</SelectItem>
+                    <SelectItem value="mile">Mile</SelectItem>
                     <SelectItem value="3000m">3000m</SelectItem>
                     <SelectItem value="5000m">5000m</SelectItem>
                     <SelectItem value="10000m">10000m</SelectItem>
+                    <SelectItem value="100m">100m</SelectItem>
+                    <SelectItem value="200m">200m</SelectItem>
+                    <SelectItem value="400m">400m</SelectItem>
+                    <SelectItem value="400h">400H</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -158,8 +165,18 @@ export default function OnboardingPage() {
                   type="text"
                   value={raceTime}
                   onChange={(e) => setRaceTime(e.target.value)}
-                  placeholder="MM:SS (e.g., 15:30)"
-                  pattern="[0-9]{1,2}:[0-5][0-9]"
+                  placeholder={
+                    ['100m', '200m', '400m', '400h'].includes(primaryEvent)
+                      ? 'SS.MS (e.g., 10.50)'
+                      : primaryEvent === '800m'
+                      ? 'M:SS (e.g., 1:50)'
+                      : 'MM:SS (e.g., 15:30)'
+                  }
+                  pattern={
+                    ['100m', '200m', '400m', '400h'].includes(primaryEvent)
+                      ? '[0-9]{1,2}\\.[0-9]{1,2}'
+                      : '[0-9]{1,2}:[0-5][0-9]'
+                  }
                 />
               </div>
             )}

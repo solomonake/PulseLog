@@ -11,9 +11,14 @@ import { Insight } from './types'
  * - If data is insufficient, output factual restatement only
  */
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+function getOpenAIClient(): OpenAI | null {
+  if (!process.env.OPENAI_API_KEY) {
+    return null
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 /**
  * Generate weekly summary from validated insights
@@ -25,6 +30,11 @@ export async function generateWeeklySummary(insights: Insight[]): Promise<string
   }
 
   if (insights.length === 0) {
+    return null
+  }
+
+  const openai = getOpenAIClient()
+  if (!openai) {
     return null
   }
 
@@ -88,7 +98,8 @@ export async function enhanceInsightExplanation(
     return insight.explanation
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  const openai = getOpenAIClient()
+  if (!openai) {
     return insight.explanation
   }
 
