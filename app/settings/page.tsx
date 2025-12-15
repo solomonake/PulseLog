@@ -10,15 +10,36 @@ export default async function SettingsPage() {
     redirect('/login')
   }
 
-  // Fetch subscription status
-  const { data: subscription } = await supabase
+  // Get app user record (role, created_at, etc)
+  const { data: appUser, error: userError } = await supabase
+    .from('users')
+    .select('id,email,role,created_at')
+    .eq('id', user.id)
+    .maybeSingle()
+
+  // If you require a users row and it doesn't exist yet, send them to onboarding/setup
+  if (userError) {
+    console.error('Failed to load user row:', userError)
+  }
+  if (!appUser) {
+    redirect('/onboarding') // change this route to whatever your setup page is
+  }
+
+  // Fetch subscription status (safe if no row yet)
+  const { data: subscription, error: subError } = await supabase
     .from('subscriptions')
     .select('*')
     .eq('user_id', user.id)
-    .single()
+    .maybeSingle()
+
+  if (subError) {
+    console.error('Failed to load subscription:', subError)
+  }
 
   return (
-    <SettingsClient user={{ id: user.id, email: user.email, role: 'athlete', created_at: user.created_at }} subscription={subscription} />
+    <SettingsClient
+      user={appUser}
+      subscription={subscription ?? null}
+    />
   )
 }
-
